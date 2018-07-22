@@ -23,6 +23,21 @@ import {
     AgmCoreModule
 } from '@agm/core';
 import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component';
+import { AngularFireModule } from 'angularfire2';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
+const firebaseConfig = {
+    apiKey: 'AIzaSyBc2e0lZhomB6Zw2gunPZUPhQkV0Balq_8',
+    authDomain: 'kuza-mbeu.firebaseapp.com',
+    databaseURL: 'https://kuza-mbeu.firebaseio.com',
+    projectId: 'kuza-mbeu',
+    storageBucket: 'kuza-mbeu.appspot.com',
+    messagingSenderId: '36140092042'
+};
 
 @NgModule({
     imports: [
@@ -35,7 +50,10 @@ import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.componen
         AppRoutingModule,
         AgmCoreModule.forRoot({
             apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-        })
+        }),
+        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
+        AngularFireAuthModule, ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }), // imports firebase/auth, only needed for auth features,
     ],
     declarations: [
         AppComponent,

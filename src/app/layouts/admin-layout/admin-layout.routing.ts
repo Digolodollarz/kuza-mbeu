@@ -8,6 +8,7 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import {ComingSoonComponent} from '../../coming-soon/coming-soon.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -60,15 +61,15 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
-    { path: 'accommodation',        component: UpgradeComponent },
-    { path: 'food',        component: UpgradeComponent },
-    { path: 'laundry',        component: UpgradeComponent },
-    { path: 'transport',        component: UpgradeComponent },
-    { path: 'entertainment',        component: UpgradeComponent },
-    { path: 'printing',        component: UpgradeComponent },
-    { path: 'store',        component: UpgradeComponent },
-    { path: 'groups',        component: UpgradeComponent },
-    { path: 'events',        component: UpgradeComponent },
-    { path: 'source',        component: UpgradeComponent },
-    { path: 'adverts',        component: UpgradeComponent },
+    { path: 'accommodation',        component: ComingSoonComponent },
+    { path: 'food',        component: ComingSoonComponent },
+    { path: 'laundry',        component: ComingSoonComponent },
+    { path: 'transport',        component: ComingSoonComponent },
+    { path: 'entertainment',        component: ComingSoonComponent },
+    { path: 'printing',        component: ComingSoonComponent },
+    { path: 'store',        component: ComingSoonComponent },
+    { path: 'groups',        component: ComingSoonComponent },
+    { path: 'events',        component: ComingSoonComponent },
+    { path: 'source',        component: ComingSoonComponent },
+    { path: 'adverts',        component: ComingSoonComponent },
 ];

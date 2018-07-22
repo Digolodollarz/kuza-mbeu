@@ -8,11 +8,15 @@ import {auth} from 'firebase';
     styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+    public fUser: any = {
+        house: null
+    };
 
     constructor(public afAuth: AngularFireAuth) {
     }
 
     ngOnInit() {
+        console.log('Auth', this.afAuth)
     }
 
     login() {

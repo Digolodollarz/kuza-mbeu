@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "material-dashboard-angular": {
+    "kuza-mbeu": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -18,7 +18,8 @@
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/manifest.json"
             ],
             "styles": [
               "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
@@ -52,7 +53,8 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
-              ]
+              ],
+              "serviceWorker": true
             }
           }
         },
@@ -97,7 +99,8 @@
             ],
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/manifest.json"
             ]
           }
         },
@@ -113,7 +116,7 @@
         }
       }
     },
-    "material-dashboard-angular-e2e": {
+    "kuza-mbeu-e2e": {
       "root": "",
       "sourceRoot": "e2e",
       "projectType": "application",
@@ -137,7 +140,7 @@
       }
     }
   },
-  "defaultProject": "material-dashboard-angular",
+  "defaultProject": "kuza-mbeu",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

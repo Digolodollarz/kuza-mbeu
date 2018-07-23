@@ -1,8 +1,8 @@
-# [Material Dashboard Angular - Free Bootstrap Material Design Admin](https://www.creative-tim.com/product/material-dashboard-angular2)[![version][version-badge]][CHANGELOG]
+# [Material Dashboard Angular - Free Bootstrap Material Design Admin](https://www.creative-tim.com/product/kuza-mbeu2)[![version][version-badge]][CHANGELOG]
 
 ![alt text](http://s3.amazonaws.com/creativetim_bucket/products/53/original/opt_md_angular_thumbnail.jpg "Material Dashboard Angular Free")
 
-**[Material Dashboard Angular](https://www.creative-tim.com/product/material-dashboard-angular2/)** is a free Material Bootstrap Admin with a fresh, new design inspired by Google's Material Design. We are very excited to introduce our take on the material concepts through an easy to use and beautiful set of components. Material Dashboard was built over the popular Bootstrap framework and it comes with a couple of third-party plugins redesigned to fit in with the rest of the elements.
+**[Material Dashboard Angular](https://www.creative-tim.com/product/kuza-mbeu2/)** is a free Material Bootstrap Admin with a fresh, new design inspired by Google's Material Design. We are very excited to introduce our take on the material concepts through an easy to use and beautiful set of components. Material Dashboard was built over the popular Bootstrap framework and it comes with a couple of third-party plugins redesigned to fit in with the rest of the elements.
 
 Material Dashboard makes use of light, surface and movement. The general layout resembles sheets of paper following multiple different layers, so that the depth and order is obvious. The navigation stays mainly on the left sidebar and the content is on the right inside the main panel.
 
@@ -21,16 +21,16 @@ You can find the Github Repo here.
 
 ## Links:
 
-+ [Live Preview](https://www.creative-tim.com/product/material-dashboard-angular2)
++ [Live Preview](https://www.creative-tim.com/product/kuza-mbeu2)
 + [Material Kit - For Front End Development](http://www.creative-tim.com/product/material-kit?ref=github-md-angular)
 
 ## Quick start
 
 Quick start options:
 
-- [Download from Github](https://github.com/tiniestory/material-dashboard-angular/archive/master.zip).
-- [Download from Creative Tim](http://www.creative-tim.com/product/material-dashboard-angular2).
-- Clone the repo: `git clone https://github.com/tiniestory/material-dashboard-angular.git`.
+- [Download from Github](https://github.com/tiniestory/kuza-mbeu/archive/master.zip).
+- [Download from Creative Tim](http://www.creative-tim.com/product/kuza-mbeu2).
+- Clone the repo: `git clone https://github.com/tiniestory/kuza-mbeu.git`.
 
 ## Terminal Commands
 

@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "material-dashboard-angular:build"
+            "browserTarget": "kuza-mbeu:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "material-dashboard-angular:build:production"
+              "browserTarget": "kuza-mbeu:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "material-dashboard-angular:build"
+            "browserTarget": "kuza-mbeu:build"
           }
         },
         "test": {
@@ -125,7 +125,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "material-dashboard-angular:serve"
+            "devServerTarget": "kuza-mbeu:serve"
           }
         },
         "lint": {

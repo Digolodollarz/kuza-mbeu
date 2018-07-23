@@ -1,31 +1,27 @@
-import {Component, OnInit} from '@angular/core';
-import {NotificationService} from './notification.service';
-
+import {Injectable} from '@angular/core';
 
 declare var $: any;
 
-@Component({
-    selector: 'app-notifications',
-    templateUrl: './notifications.component.html',
-    styleUrls: ['./notifications.component.css']
+@Injectable({
+    providedIn: 'root'
 })
-export class NotificationsComponent implements OnInit {
+export class NotificationService {
 
-    constructor(private notifications: NotificationService) {
-    }
+    public static showNotification(message: string, url?: string, type: string = 'info', from = 'bottom', align = 'center') {
+        if (!message) {
+            throw new Error('Your message was empty')
+        }
+        // const type = ['', 'info', 'success', 'warning', 'danger'];
 
-    showNotification(from, align) {
-        const type = ['', 'info', 'success', 'warning', 'danger'];
-
-        const color = Math.floor((Math.random() * 4) + 1);
+        // const color = Math.floor((Math.random() * 4) + 1);
 
         $.notify({
             icon: 'car',
-            message: 'Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer.',
-            url: 'https://diggle.tech/studios'
+            message: message,
+            url: url
 
         }, {
-            type: type[color],
+            type: type,
             timer: 4000,
             placement: {
                 from: from,
@@ -33,7 +29,7 @@ export class NotificationsComponent implements OnInit {
             },
             template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-11 col-sm-4 col-md-4 alert alert-{0} alert-with-icon" role="alert">' +
             '<button mat-button  type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">  <i class="material-icons">close</i></button>' +
-            '<i class="material-icons" data-notify="icon">5</i> ' +
+            '<i class="material-icons" data-notify="icon"></i> ' +
             '<span data-notify="title">{1}</span> ' +
             '<span data-notify="message">{2}</span>' +
             '<div class="progress" data-notify="progressbar">' +
@@ -44,8 +40,7 @@ export class NotificationsComponent implements OnInit {
         });
     }
 
-    ngOnInit() {
-        NotificationService.showNotification('Hello')
+    constructor() {
     }
 
 }

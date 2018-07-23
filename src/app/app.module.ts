@@ -29,6 +29,10 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AccessDeniedComponent } from './access-denied/access-denied.component';
+import { AccommodationComponent } from './app-sevices/accommodation/accommodation.component';
+import { FoodComponent } from './app-services/food/food.component';
+import { TransportComponent } from './app-services/transport/transport.component';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyBc2e0lZhomB6Zw2gunPZUPhQkV0Balq_8',

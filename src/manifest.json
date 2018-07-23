@@ -1,7 +1,7 @@
 {
-  "name": "kuza-mbeu",
-  "short_name": "kuza-mbeu",
-  "theme_color": "#1976d2",
+  "name": "Kuza Mbeu",
+  "short_name": "Kuza",
+  "theme_color": "#ff2121",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "/",

@@ -88,7 +88,8 @@
                                     </div> -->
                                 </div>
                             </div>
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile
+                            <button mat-raised-button type="submit" (click)="updateProfile()"
+                                    class="btn btn-danger pull-right">Update Profile
                             </button>
                             <div class="clearfix"></div>
                         </form>
@@ -125,7 +126,8 @@
                 <div class="card-body">
                     <div class="row">
                         <button (click)="login('Google')"
-                                mat-raised-button type="submit" class="btn btn-danger center-block  ml-auto mr-auto">Login with Google
+                                mat-raised-button type="submit" class="btn btn-danger center-block  ml-auto mr-auto">
+                            Login with Google
                         </button>
                     </div>
                     <div class="row">

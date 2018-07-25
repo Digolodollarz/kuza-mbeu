@@ -3,6 +3,7 @@ import {ROUTES} from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
+import {CartService} from '../../app-services/cart.service';
 
 @Component({
     selector: 'app-navbar',
@@ -16,7 +17,11 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(location: Location, private element: ElementRef, private router: Router, private titleSvc: Title) {
+    constructor(location: Location,
+                private element: ElementRef,
+                private router: Router,
+                private titleSvc: Title,
+                private cart: CartService) {
         this.location = location;
         this.sidebarVisible = false;
     }
@@ -27,7 +32,7 @@ export class NavbarComponent implements OnInit {
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
         this.router.events.subscribe((event) => {
             this.sidebarClose();
-            let $layer: any = document.getElementsByClassName('close-layer')[0];
+            var $layer: any = document.getElementsByClassName('close-layer')[0];
             if ($layer) {
                 $layer.remove();
                 this.mobile_menu_visible = 0;
@@ -57,7 +62,7 @@ export class NavbarComponent implements OnInit {
     sidebarToggle() {
         // const toggleButton = this.toggleButton;
         // const body = document.getElementsByTagName('body')[0];
-        let $toggle = document.getElementsByClassName('navbar-toggler')[0];
+        var $toggle = document.getElementsByClassName('navbar-toggler')[0];
 
         if (this.sidebarVisible === false) {
             this.sidebarOpen();
@@ -82,7 +87,7 @@ export class NavbarComponent implements OnInit {
                 $toggle.classList.add('toggled');
             }, 430);
 
-            let $layer = document.createElement('div');
+            var $layer = document.createElement('div');
             $layer.setAttribute('class', 'close-layer');
 
 
@@ -126,5 +131,9 @@ export class NavbarComponent implements OnInit {
             }
         }
         return 'KuzaMbeu | Nurture a seed';
+    }
+
+    getCartCount() {
+        return this.cart.getCount();
     }
 }

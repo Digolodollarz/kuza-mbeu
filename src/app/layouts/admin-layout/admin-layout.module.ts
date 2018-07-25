@@ -21,7 +21,7 @@ import {
 import {ComingSoonComponent} from '../../coming-soon/coming-soon.component';
 import {ComingSoonModule} from '../../coming-soon/coming-soon.module';
 import {AccessDeniedComponent} from '../../access-denied/access-denied.component';
-import {AccommodationComponent} from '../../app-sevices/accommodation/accommodation.component';
+import {AccommodationComponent} from '../../app-services/accommodation/accommodation.component';
 import {TransportComponent} from '../../app-services/transport/transport.component';
 import {FoodComponent} from '../../app-services/food/food.component';
 

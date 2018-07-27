@@ -21,7 +21,6 @@ export class FoodComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loadOrder();
         this.meal.extras = [];
         this.mainItems = [
             {name: 'Sadza', price: 0},
@@ -48,19 +47,28 @@ export class FoodComponent implements OnInit {
             {name: 'Coke (bottle)', price: 0.5},
             {name: 'Coke (can)', price: 0.6},
         ];
-
+        this.afAuth.user.take(1).subscribe(user => {
+            if (user) {
+                if (!this.meal.main && !this.meal.relish) {
+                    this.loadOrder();
+                }
+            }
+        })
     }
 
     addMain(item: MealItemMain) {
         this.meal.main = item;
+        this.saveOrder();
     }
 
     addRelish(item: MealItemRelish) {
         this.meal.relish = item;
+        this.saveOrder();
     }
 
     addVegetables(item: MealItemBundle) {
         this.meal.vegetable = item;
+        this.saveOrder();
     }
 
     addExtra(item: MealItemExtra) {
@@ -68,6 +76,7 @@ export class FoodComponent implements OnInit {
             this.meal.extras = [];
         }
         this.meal.extras.push(item);
+        this.saveOrder();
     }
 
     removeExtra(item: MealItemExtra) {
@@ -95,27 +104,25 @@ export class FoodComponent implements OnInit {
             }
         }
         this.meal.price = total;
-        this.saveOrder();
         return total;
     }
 
     loadOrder() {
-        if (this.afAuth.auth.currentUser) {
-            this.afStore.doc<Meal>('orders/' + this.afAuth.auth.currentUser.uid + '/saved/meal')
-                .valueChanges().take(1).subscribe(meal => {
-                if (meal) {
-                    this.meal = meal;
-                    NotificationService.showNotification('Previous meal opened')
-                }
-            });
-        }
+        this.afStore.doc<Meal>('orders/' + this.afAuth.auth.currentUser.uid + '/saved/meal')
+            .valueChanges().take(1).subscribe(meal => {
+            if (meal) {
+                this.meal = meal;
+                NotificationService.showNotification('Previous meal loaded.')
+            }
+        });
     }
 
     saveOrder() {
         if (this.afAuth.auth.currentUser) {
-            this.afStore.doc<Meal>('orders/' + this.afAuth.auth.currentUser.uid + '/saved/meal')
-                .set(this.meal)
-                .catch(error => console.error(error))
+            const _meal = Object.assign({}, this.meal);
+            const meal_url = 'orders/' + this.afAuth.auth.currentUser.uid + '/saved/meal';
+            this.afStore.doc<Meal>(meal_url)
+                .set(_meal)
         }
     }
 

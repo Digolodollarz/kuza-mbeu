@@ -55,3 +55,17 @@ export class MealItemExtra {
     description?: string;
 }
 
+export class House {
+    location: string;
+    street: string;
+    address: string;
+    rooms: number;
+    perRoom: number;
+    price: number;
+    wifi: boolean;
+    distance: number;
+    tiles: boolean;
+    imageUrl: string;
+    tv = false;
+}
+

@@ -8,31 +8,27 @@
                         <p class="card-category">Use the wizard to choose the perfect meal for yourself.</p>
                     </div>
                     <div class="card-body">
-                        <ul class="nav nav-pills nav-pills-icons" role="tablist">
+                        <ul class="nav nav-pills nav-pills-icons mr-auto ml-auto" role="tablist">
                             <!--
                                 color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
                             -->
                             <li class="nav-item">
                                 <a class="nav-link active" href="#main" role="tab" data-toggle="tab">
-                                    <i class="material-icons">dashboard</i>
-                                    Pick main
+                                    Main
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#relish" role="tab" data-toggle="tab">
-                                    <i class="material-icons">schedule</i>
                                     Relish
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#vegetable" role="tab" data-toggle="tab">
-                                    <i class="material-icons">list</i>
                                     Vegetables
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#extras" role="tab" data-toggle="tab">
-                                    <i class="material-icons">list</i>
                                     Extras
                                 </a>
                             </li>
@@ -116,6 +112,13 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+
                         <h3 *ngIf="meal.main">
                             You have chosen<span> {{meal.main.name}}</span>
                             <span *ngIf="meal.relish"> and {{meal.relish.name}}</span>
@@ -123,7 +126,7 @@
                         </h3>
 
                         <h3 *ngIf="!meal.main && meal.relish">
-                            You have chosen<span>{{meal.relish.name}}</span>
+                            You have chosen <span>{{meal.relish.name}}</span>
                             <span *ngIf="meal.vegetable"> with {{meal.vegetable.name}}</span>.
                         </h3>
 
@@ -143,50 +146,10 @@
                                     (click)="placeOrder()">Order
                             </button>
                         </h2>
-
-                    </div>
-                    <div class="card-footer">
-                        <a href="//diggle.tech/studios">Diggle App Studios</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-6 ml-auto mr-auto">
-                <div class="card card-chart">
-                    <div class="card-header card-header-image" data-header-animation="true">
-                        <a href="#pablo">
-                            <img class="img"
-                                 src="https://images.unsplash.com/photo-1511439817358-bee8e21790b5?auto=format&fit=crop&w=750&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
-                            <div class="card-title">
-                                This Summer Will be Awesome
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-
-                            <button type="button" class="btn btn-info btn-link" rel="tooltip"
-                                    data-placement="bottom" title="Refresh">
-                                <i class="material-icons">refresh</i>
-                            </button>
-                            <button type="button" class="btn btn-default btn-link" rel="tooltip"
-                                    data-placement="bottom" title="Change Date">
-                                <i class="material-icons">edit</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">Website Views</h4>
-                        <p class="card-category">Last Campaign Performance</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> campaign sent 2 days ago
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

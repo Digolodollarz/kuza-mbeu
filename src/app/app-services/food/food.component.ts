@@ -3,6 +3,7 @@ import {Meal, MealItemBundle, MealItemExtra, MealItemMain, MealItemRelish} from 
 import {NotificationService} from '../../notifications/notification.service';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {AngularFireAuth} from 'angularfire2/auth';
+import {MealService} from '../meal.service';
 
 @Component({
     selector: 'app-food',
@@ -17,36 +18,16 @@ export class FoodComponent implements OnInit {
     meal = new Meal();
 
     constructor(public afAuth: AngularFireAuth,
-                private afStore: AngularFirestore) {
+                private afStore: AngularFirestore,
+                private meals: MealService) {
     }
 
     ngOnInit() {
         this.meal.extras = [];
-        this.mainItems = [
-            {name: 'Sadza', price: 0},
-            {name: 'Rice', price: 0},
-            {name: 'Chips', price: 1},
-        ];
-
-        this.relishItems = [
-            {name: 'Chicken', price: 1},
-            {name: 'Beef', price: 1},
-            {name: 'T-Bone', price: 1.5},
-            {name: 'Beans', price: 0.5},
-            {name: 'Mince', price: 0.75},
-        ];
-
-        this.vegetableItems = [
-            {name: 'Coleslaw', price: 0, standalone: false},
-            {name: 'Greens', price: 0, standalone: false},
-            {name: 'Salads', price: 0, standalone: false, min_offer: 1.5},
-        ];
-
-        this.extrasItems = [
-            {name: 'Pepsi', price: 0.5},
-            {name: 'Coke (bottle)', price: 0.5},
-            {name: 'Coke (can)', price: 0.6},
-        ];
+        this.mainItems = this.meals.getMainItems();
+        this.relishItems = this.meals.getRelishItems();
+        this.vegetableItems = this.meals.getVegetableItems();
+        this.extrasItems = this.meals.getExtrasItems();
         this.afAuth.user.take(1).subscribe(user => {
             if (user) {
                 if (!this.meal.main && !this.meal.relish) {

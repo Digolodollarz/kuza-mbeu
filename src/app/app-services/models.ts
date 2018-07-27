@@ -1,7 +1,9 @@
 export interface CartItem {
     name: string;
-    price?: number;
+    price: number;
+    discontinued?: boolean;
 }
+
 
 export class Meal implements CartItem {
     main?: MealItemMain;
@@ -9,11 +11,12 @@ export class Meal implements CartItem {
     vegetable?: MealItemBundle;
     extras?: MealItemExtra[];
     discount?: number;
-    price?: number;
+    price: number;
     name: string;
+    available?: boolean;
 }
 
-export class MealItemMain {
+export class MealItem implements CartItem {
     name: string;
     name_sn?: string;
     name_nd?: string;
@@ -22,37 +25,20 @@ export class MealItemMain {
     standalone?: boolean;
     imageUrl?: string;
     description?: string;
+    available?: boolean;
+    discontinued?: boolean;
 }
 
-export class MealItemBundle {
-    name?: string;
-    name_sn?: string;
-    name_nd?: string;
-    price?: number;
-    standalone?: boolean;
-    min_offer?: number;
-    imageUrl?: string;
-    description?: string;
+export class MealItemMain extends MealItem {
 }
 
-export class MealItemRelish {
-    name?: string;
-    name_sn?: string;
-    name_nd?: string;
-    price: number;
-    standalone?: boolean;
-    imageUrl?: string;
-    description?: string;
+export class MealItemBundle extends MealItem {
 }
 
-export class MealItemExtra {
-    name?: string;
-    name_sn?: string;
-    name_nd?: string;
-    price?: number;
-    standalone?: boolean;
-    imageUrl?: string;
-    description?: string;
+export class MealItemRelish extends MealItem {
+}
+
+export class MealItemExtra extends MealItem {
 }
 
 export class House {

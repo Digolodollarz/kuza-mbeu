@@ -33,6 +33,7 @@ import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { AccommodationComponent } from './app-services/accommodation/accommodation.component';
 import { FoodComponent } from './app-services/food/food.component';
 import { TransportComponent } from './app-services/transport/transport.component';
+import { AddMealItemComponent } from './app-services/add-meal-item/add-meal-item.component';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyBc2e0lZhomB6Zw2gunPZUPhQkV0Balq_8',
@@ -62,6 +63,7 @@ const firebaseConfig = {
     declarations: [
         AppComponent,
         AdminLayoutComponent,
+        AddMealItemComponent,
 
     ],
     providers: [],

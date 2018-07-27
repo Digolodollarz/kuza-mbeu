@@ -180,10 +180,19 @@
                                             <div class="ripple-container"></div>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <!-- Large modal -->
+                                        <button type="button" class="btn btn-fab-mini" data-toggle="modal"
+                                                data-target="#addMealModal">
+                                            <i class="material-icons">add</i>
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+                    <app-add-meal-item [meal]="newMeal"></app-add-meal-item>
+
                     <div class="card-body">
                         <div class="tab-content">
                             <div class="tab-pane active" id="main">
@@ -226,6 +235,7 @@
                                     </tr>
                                     </tbody>
                                 </table>
+
                             </div>
                             <div class="tab-pane" id="relish">
                                 <table class="table">

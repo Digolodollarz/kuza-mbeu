@@ -63,7 +63,6 @@ const firebaseConfig = {
     declarations: [
         AppComponent,
         AdminLayoutComponent,
-        AddMealItemComponent,
 
     ],
     providers: [],

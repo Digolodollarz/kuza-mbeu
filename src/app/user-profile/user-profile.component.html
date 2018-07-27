@@ -9,7 +9,7 @@
                         <p class="card-category">Complete your profile</p>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form class="" novalidate="">
                             <div class="row">
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
@@ -119,28 +119,32 @@
         </div>
 
         <div class="col-md-6 ml-auto mr-auto" *ngIf="! (afAuth.user | async)">
-
-
             <form action="" class="form ng-untouched ng-pristine ng-valid" method="" novalidate="">
                 <div class="card card-login">
                     <div class="card-header card-header-rose text-center"><h4 class="card-title">Log in</h4>
                         <div class="social-line"><a class="btn btn-just-icon btn-link btn-white" href="#pablo"><i
-                                class="fa fa-facebook-square"></i></a><a class="btn btn-just-icon btn-link btn-white" href="#pablo"><i
-                                class="fa fa-twitter"></i></a><a class="btn btn-just-icon btn-link btn-white" href="#pablo"><i
+                                class="fa fa-facebook-square"></i></a><a class="btn btn-just-icon btn-link btn-white"
+                                                                         href="#pablo"><i
+                                class="fa fa-twitter"></i></a><a class="btn btn-just-icon btn-link btn-white"
+                                                                 href="#pablo"><i
                                 class="fa fa-google-plus"></i></a></div>
                     </div>
-                    <div class="card-body "><p class="card-description text-center">Or Be Classical</p><span class="bmd-form-group"><div
+                    <div class="card-body "><p class="card-description text-center">Or Be Classical</p><span
+                            class="bmd-form-group"><div
                             class="input-group"><div class="input-group-prepend"><span class="input-group-text"><i
-                            class="material-icons">face</i></span></div><input class="form-control" placeholder="First Name..."
+                            class="material-icons">face</i></span></div><input class="form-control"
+                                                                               placeholder="First Name..."
                                                                                type="text"></div></span><span
                             class="bmd-form-group"><div class="input-group"><div class="input-group-prepend"><span
-                            class="input-group-text"><i class="material-icons">email</i></span></div><input class="form-control"
-                                                                                                            placeholder="Email..."
-                                                                                                            type="email"></div></span><span
+                            class="input-group-text"><i class="material-icons">email</i></span></div><input
+                            class="form-control"
+                            placeholder="Email..."
+                            type="email"></div></span><span
                             class="bmd-form-group"><div class="input-group"><div class="input-group-prepend"><span
                             class="input-group-text"><i class="material-icons">lock_outline</i></span></div><input
                             class="form-control" placeholder="Password..." type="password"></div></span></div>
-                    <div class="card-footer justify-content-center"><a class="btn btn-rose btn-link btn-lg" href="#pablo">Lets
+                    <div class="card-footer justify-content-center"><a class="btn btn-rose btn-link btn-lg"
+                                                                       href="#pablo">Lets
                         Go</a></div>
                 </div>
             </form>

@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import * as Chartist from 'chartist';
 import {AngularFirestore} from 'angularfire2/firestore';
-import {MealItemBundle, MealItemExtra, MealItemMain, MealItemRelish} from '../app-services/models';
+import {MealItem, MealItemBundle, MealItemExtra, MealItemMain, MealItemRelish} from '../app-services/models';
 import {MealService} from '../app-services/meal.service';
+
+declare const $: any;
 
 export enum OderStatus {
     Incomplete,
@@ -29,6 +31,7 @@ export class DashboardComponent implements OnInit {
     vegetableMeals: MealItemBundle[] = [];
     bundleMeals: MealItemMain[] = [];
     extrasMeals: MealItemExtra[] = [];
+    newMeal = new MealItem();
 
 
     constructor(private afStore: AngularFirestore,
@@ -197,6 +200,11 @@ export class DashboardComponent implements OnInit {
     }
 
     editMealItem(item) {
+        this.newMeal = item;
+        $('#addMealModal').modal('show');
+        $('#addMealModal').on('hidden.bs.modal', () => {
+            this.newMeal = new MealItem();
+        });
         return true;
     }
 

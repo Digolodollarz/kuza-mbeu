@@ -18,10 +18,10 @@ export class Meal implements CartItem {
 
 export class MealItem implements CartItem {
     name: string;
-    name_sn?: string;
-    name_nd?: string;
+    nameSn?: string;
+    nameNd?: string;
     price: number;
-    price_standalone?: number;
+    priceStandalone?: number;
     standalone?: boolean;
     imageUrl?: string;
     description?: string;

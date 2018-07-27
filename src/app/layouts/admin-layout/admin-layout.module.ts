@@ -24,6 +24,7 @@ import {AccessDeniedComponent} from '../../access-denied/access-denied.component
 import {AccommodationComponent} from '../../app-services/accommodation/accommodation.component';
 import {TransportComponent} from '../../app-services/transport/transport.component';
 import {FoodComponent} from '../../app-services/food/food.component';
+import {AddMealItemComponent} from '../../app-services/add-meal-item/add-meal-item.component';
 
 @NgModule({
     imports: [
@@ -49,6 +50,7 @@ import {FoodComponent} from '../../app-services/food/food.component';
         AccommodationComponent,
         FoodComponent,
         TransportComponent,
+        AddMealItemComponent,
     ]
 })
 

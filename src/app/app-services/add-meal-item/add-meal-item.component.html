@@ -1,0 +1,66 @@
+<div class="add" >
+    <div class="modal fade bd-example-modal-lg" id="addMealModal" tabindex="-1" role="dialog"
+         aria-labelledby="AddOrUpdateMeal"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="card">
+                    <form #addMealForm="ngForm" class="pristine ng-untouched">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg 3">
+                                <mat-form-field class="example-full-width">
+                                    <input name="name" [(ngModel)]="meal.name"
+                                           matInput placeholder="Name" required="required">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg 3">
+                                <mat-form-field class="example-full-width">
+                                    <input name="name-sn" [(ngModel)]="meal.nameSn"
+                                           matInput placeholder="Shona Name">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg 3">
+                                <mat-form-field class="example-full-width">
+                                    <input name="name-nd" [(ngModel)]="meal.nameNd"
+                                           matInput placeholder="Ndebele Name">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg 3">
+                                <mat-form-field class="example-full-width">
+                                    <input name="price" [(ngModel)]="meal.price" type="number"
+                                           matInput placeholder="Price" required="required">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg 3">
+                                <mat-form-field class="example-full-width">
+                                    <input name="standalone" [(ngModel)]="meal.standalone"
+                                           matInput placeholder="Standalone" required="required">
+                                </mat-form-field>
+                            </div>
+                            <div *ngIf="meal.standalone" class="col-sm-12 col-md-4 col-lg 3">
+                                <mat-form-field class="example-full-width">
+                                    <input name="price-standalone" [(ngModel)]="meal.priceStandalone"
+                                           matInput placeholder="Price Standalone" required="required">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg 3">
+                                <mat-form-field class="example-full-width">
+                                    <input name="image-url" [(ngModel)]="meal.imageUrl"
+                                           matInput placeholder="imageUrl">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg 3">
+                                <mat-form-field class="example-full-width">
+                                    <input name="available" [(ngModel)]="meal.available"
+                                           matInput placeholder="Available" required="required">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </form>
+                    <button class="btn-outline-primary btn btn-small" (click)="save(meal)">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

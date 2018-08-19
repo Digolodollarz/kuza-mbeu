@@ -204,7 +204,7 @@
                                     <th>Manage</th>
                                     </thead>
                                     <tbody>
-                                    <tr *ngFor="let meal of mainMeals">
+                                    <tr *ngFor="let meal of mainMeals | async">
                                         <td>
                                             <div class="form-check">
                                                 <label class="form-check-label">
@@ -361,6 +361,34 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Housing</h4>
+                        <p class="card-category">Available Housing</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Orders</th>
+                            <th>Role</th>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let user of latestUsers">
+                                <td>{{user.firstName}}</td>
+                                <td>{{user.lastName}}</td>
+                                <td>{{23.0 | currency}}</td>
+                                <td>{{user.role || 'USER'}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

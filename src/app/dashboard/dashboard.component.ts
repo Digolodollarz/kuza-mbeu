@@ -3,6 +3,7 @@ import * as Chartist from 'chartist';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {MealItem, MealItemBundle, MealItemExtra, MealItemMain, MealItemRelish} from '../app-services/models';
 import {MealService} from '../app-services/meal.service';
+import {Observable} from 'rxjs/Rx';
 
 declare const $: any;
 
@@ -26,7 +27,7 @@ export enum OderStatus {
 export class DashboardComponent implements OnInit {
     latestUsers: UserProfile[];
     // dataDailySalesChart
-    mainMeals: MealItemMain[] = [];
+    mainMeals: Observable<MealItemMain[]> = Observable.of([]);
     relishMeals: MealItemRelish[] = [];
     vegetableMeals: MealItemBundle[] = [];
     bundleMeals: MealItemMain[] = [];

@@ -1,4 +1,4 @@
-<div class="add" >
+<div class="add">
     <div class="modal fade bd-example-modal-lg" id="addMealModal" tabindex="-1" role="dialog"
          aria-labelledby="AddOrUpdateMeal"
          aria-hidden="true">
@@ -24,6 +24,17 @@
                                     <input name="name-nd" [(ngModel)]="meal.nameNd"
                                            matInput placeholder="Ndebele Name">
                                 </mat-form-field>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg 3">
+                                <div class="example-full-width">
+                                    <select name="name-nd" [(ngModel)]="mealType"
+                                            matInput placeholder="Item Type">
+                                        <option value="Extra">Extra</option>
+                                        <option value="Main">Main</option>
+                                        <option value="Veg">Veg</option>
+                                        <option value="Relish">Relish</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-sm-12 col-md-4 col-lg 3">
                                 <mat-form-field class="example-full-width">

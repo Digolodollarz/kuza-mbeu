@@ -4,8 +4,13 @@ export interface CartItem {
     discontinued?: boolean;
 }
 
+export class Doc {
+    id?: string;
+    modified?: string;
+}
 
-export class Meal implements CartItem {
+
+export class Meal extends Doc implements CartItem {
     main?: MealItemMain;
     relish?: MealItemRelish;
     vegetable?: MealItemBundle;
@@ -16,7 +21,7 @@ export class Meal implements CartItem {
     available?: boolean;
 }
 
-export class MealItem implements CartItem {
+export class MealItem extends Doc implements CartItem {
     name: string;
     nameSn?: string;
     nameNd?: string;

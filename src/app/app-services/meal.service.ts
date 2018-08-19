@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
-import {MealItemBundle, MealItemExtra, MealItemMain, MealItemRelish} from './models';
+import {MealItem, MealItemBundle, MealItemExtra, MealItemMain, MealItemRelish} from './models';
+import {AngularFirestore} from 'angularfire2/firestore';
+import {Observable} from 'rxjs/Rx';
 
 @Injectable({
     providedIn: 'root'
@@ -31,11 +33,21 @@ export class MealService {
         {name: 'Coke (can)', price: 0.6},
     ];
 
-    constructor() {
+    private mealRef;
+
+    constructor(private afStore: AngularFirestore) {
+        this.mealRef = this.afStore.collection<MealItemMain>('meals/main/all')
     }
 
-    getMainItems(): MealItemMain[] {
-        return this.mainItems;
+    getMainItems(): Observable<MealItemMain[]> {
+        return this.mealRef
+            .snapshotChanges().map(actions => {
+                return actions.map(action => {
+                    const data = action.payload.doc.data() as MealItemMain;
+                    const id = action.payload.doc.id;
+                    return {id, ...data}
+                })
+            });
     }
 
     getRelishItems(): MealItemRelish[] {
@@ -48,5 +60,13 @@ export class MealService {
 
     getExtrasItems(): MealItemExtra[] {
         return this.extrasItems;
+    }
+
+    saveMealItem(item: MealItem) {
+        if (item.id) {
+            return this.mealRef.doc(item.id).update(item);
+        } else {
+            return this.mealRef.add(Object.assign({}, item));
+        }
     }
 }

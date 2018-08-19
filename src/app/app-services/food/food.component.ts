@@ -4,6 +4,7 @@ import {NotificationService} from '../../notifications/notification.service';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {MealService} from '../meal.service';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
     selector: 'app-food',
@@ -12,7 +13,7 @@ import {MealService} from '../meal.service';
 })
 export class FoodComponent implements OnInit {
     relishItems: MealItemRelish[];
-    mainItems: MealItemMain[];
+    mainItems: Observable<MealItemMain[]>;
     extrasItems: MealItemExtra[];
     vegetableItems: MealItemBundle[];
     meal = new Meal();

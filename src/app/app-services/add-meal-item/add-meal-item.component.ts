@@ -13,6 +13,7 @@ export class AddMealItemComponent implements OnInit {
 
     @Input() meal: MealItem;
     updating = false;
+    mealType: string;
 
     constructor(private meals: MealService) {
     }
@@ -26,6 +27,7 @@ export class AddMealItemComponent implements OnInit {
     }
 
     save(item) {
+        this.meals.saveMealItem(item);
         console.log(item);
         $('#addMealModal').modal('hide');
     }

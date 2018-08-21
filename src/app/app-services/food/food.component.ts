@@ -68,6 +68,7 @@ export class FoodComponent implements OnInit {
             return;
         }
         this.meal.extras.splice(index, 1);
+        this.saveOrder();
     }
 
     calculateTotal() {

@@ -32,6 +32,7 @@ export class MealItem extends Doc implements CartItem {
     description?: string;
     available?: boolean;
     discontinued?: boolean;
+    type?: string;
 }
 
 export class MealItemMain extends MealItem {

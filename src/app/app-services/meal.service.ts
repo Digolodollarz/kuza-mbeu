@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
-import {MealItem, MealItemBundle, MealItemExtra, MealItemMain, MealItemRelish} from './models';
+import {MealItem} from './models';
 import {AngularFirestore, CollectionReference} from 'angularfire2/firestore';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import SnapshotMetadata = firebase.firestore.SnapshotMetadata;
 
 @Injectable({
     providedIn: 'root'
@@ -17,67 +16,66 @@ export class MealService {
     private readonly extrasRef;
 
     constructor(private afStore: AngularFirestore) {
-        this.mainRef = this.afStore.collection<MealItemMain>('meals/main/all');
-        this.relishRef = this.afStore.collection<MealItemMain>('meals/relish/all');
-        this.vegetableRef = this.afStore.collection<MealItemMain>('meals/vegetables/all');
-        this.extrasRef = this.afStore.collection<MealItemMain>('meals/extras/all');
+        this.mealRef = this.afStore.collection<MealItem>('meals');
+        this.mainRef = this.afStore.collection<MealItem>('meals', ref => {
+            return ref.where('type', '==', 'main')
+        });
+        this.relishRef = this.afStore.collection<MealItem>('meals', ref => {
+            return ref.where('type', '==', 'relish')
+        });
+        this.vegetableRef = this.afStore.collection<MealItem>('meals', ref => {
+            return ref.where('type', '==', 'veg')
+        });
+        this.extrasRef = this.afStore.collection<MealItem>('meals', ref => {
+            return ref.where('type', '==', 'extra')
+        });
     }
 
-    getMainItems(): Observable<MealItemMain[]> {
+    getMainItems(): Observable<MealItem[]> {
         return this.mainRef
             .snapshotChanges().pipe(map((actions: any) => {
                 return actions.map(action => {
-                    const data = action.payload.doc.data() as MealItemMain;
+                    const data = action.payload.doc.data() as MealItem;
                     const id = action.payload.doc.id;
                     return {id, ...data}
                 })
             }));
     }
 
-    getRelishItems(): Observable<MealItemRelish[]> {
+    getRelishItems(): Observable<MealItem[]> {
         return this.relishRef
             .snapshotChanges().pipe(map((actions: any) => {
                 return actions.map(action => {
-                    const data = action.payload.doc.data() as MealItemRelish;
+                    const data = action.payload.doc.data() as MealItem;
                     const id = action.payload.doc.id;
                     return {id, ...data}
                 })
             }));
     }
 
-    getVegetableItems(): Observable<MealItemBundle[]> {
+    getVegetableItems(): Observable<MealItem[]> {
         return this.vegetableRef
             .snapshotChanges().pipe(map((actions: any) => {
                 return actions.map(action => {
-                    const data = action.payload.doc.data() as MealItemBundle;
+                    const data = action.payload.doc.data() as MealItem;
                     const id = action.payload.doc.id;
                     return {id, ...data}
                 })
             }));
     }
 
-    getExtrasItems(): Observable<MealItemExtra[]> {
+    getExtrasItems(): Observable<MealItem[]> {
         return this.extrasRef
             .snapshotChanges().pipe(map((actions: any) => {
                 return actions.map(action => {
-                    const data = action.payload.doc.data() as MealItemExtra;
+                    const data = action.payload.doc.data() as MealItem;
                     const id = action.payload.doc.id;
                     return {id, ...data}
                 })
             }));
     }
 
-    saveMealItem(item: MealItem, type) {
-        console.log('Type', type);
-        if (type === 'main') {
-            this.mealRef = this.mainRef
-        } else if (type === 'relish') {
-            this.mealRef = this.relishRef
-        } else if (type === 'veg') {
-            this.mealRef = this.vegetableRef
-        } else if (type === 'extra') {
-            this.mealRef = this.extrasRef
-        }
+    saveMealItem(item: MealItem) {
         if (item.id) {
             return this.mealRef.doc(item.id).update(item);
         } else {

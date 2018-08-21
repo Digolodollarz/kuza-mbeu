@@ -27,7 +27,7 @@ export class AddMealItemComponent implements OnInit {
     }
 
     save(item) {
-        this.meals.saveMealItem(item, this.mealType);
+        this.meals.saveMealItem(item);
         console.log(item);
         $('#addMealModal').modal('hide');
     }

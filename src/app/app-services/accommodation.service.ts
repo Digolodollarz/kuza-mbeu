@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {AngularFireStorage} from 'angularfire2/storage';
-import {House, MealItem, MealItemMain} from './models';
+import {House} from './models';
 import {Observable} from 'rxjs/Rx';
 import {map} from 'rxjs/internal/operators';
 
@@ -28,7 +28,7 @@ export class AccommodationService {
             }));
     }
 
-    saveHouse(item: MealItem) {
+    saveHouse(item: House) {
         if (item.id) {
             return this.houseRef.doc(item.id).update(JSON.parse(JSON.stringify(item)));
         } else {

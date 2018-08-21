@@ -3,7 +3,7 @@ import {of as observableOf} from 'rxjs';
 import {Component, OnInit} from '@angular/core';
 import * as Chartist from 'chartist';
 import {AngularFirestore} from 'angularfire2/firestore';
-import {House, MealItem, MealItemBundle, MealItemExtra, MealItemMain, MealItemRelish} from '../../app-services/models';
+import {House, MealItem} from '../../app-services/models';
 import {MealService} from '../../app-services/meal.service';
 import {Observable} from 'rxjs/Rx';
 import {AccommodationService} from '../../app-services/accommodation.service';
@@ -30,11 +30,11 @@ export enum OderStatus {
 export class DashboardComponent implements OnInit {
     latestUsers: UserProfile[];
     // dataDailySalesChart
-    mainMeals: Observable<MealItemMain[]> = observableOf([]);
-    relishMeals: Observable<MealItemRelish[]> = observableOf([]);
-    vegetableMeals: Observable<MealItemBundle[]> = observableOf([]);
-    bundleMeals: Observable<MealItemMain[]> = observableOf([]);
-    extrasMeals: Observable<MealItemExtra[]> = observableOf([]);
+    mainMeals: Observable<MealItem[]> = observableOf([]);
+    relishMeals: Observable<MealItem[]> = observableOf([]);
+    vegetableMeals: Observable<MealItem[]> = observableOf([]);
+    bundleMeals: Observable<MealItem[]> = observableOf([]);
+    extrasMeals: Observable<MealItem[]> = observableOf([]);
     newMeal = new MealItem();
     iType = 'main';
 

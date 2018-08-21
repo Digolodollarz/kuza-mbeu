@@ -96,6 +96,32 @@
                                                matInput placeholder="Image URL to be place here.">
                                     </mat-form-field>
                                 </div>
+                                <div class="row col-12">
+                                    <div class="col-sm-12 col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input name="ownerName" [(ngModel)]="house.owner"
+                                                   matInput placeholder="Name of owner">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input name="email" [(ngModel)]="house.contactEmail" type="email"
+                                                   matInput placeholder="Email address">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input name="contactPhone" [(ngModel)]="house.contactPhone" type="tel"
+                                                   matInput placeholder="Phone number">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input name="contactPhone2" [(ngModel)]="house.contactPhone2"
+                                                   matInput placeholder="Alternative number">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>

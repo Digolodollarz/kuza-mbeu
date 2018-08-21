@@ -11,10 +11,10 @@ export class Doc {
 
 
 export class Meal extends Doc implements CartItem {
-    main?: MealItemMain;
-    relish?: MealItemRelish;
-    vegetable?: MealItemBundle;
-    extras?: MealItemExtra[];
+    main?: MealItem;
+    relish?: MealItem;
+    vegetable?: MealItem;
+    extras?: MealItem[];
     discount?: number;
     price: number;
     name: string;
@@ -35,18 +35,6 @@ export class MealItem extends Doc implements CartItem {
     type?: string;
 }
 
-export class MealItemMain extends MealItem {
-}
-
-export class MealItemBundle extends MealItem {
-}
-
-export class MealItemRelish extends MealItem {
-}
-
-export class MealItemExtra extends MealItem {
-}
-
 export class House {
     id?: number;
     location: string;
@@ -60,5 +48,9 @@ export class House {
     tiles: boolean;
     imageUrl: string;
     tv = false;
+    contactPhone?: string;
+    contactPhone2?: string;
+    contactEmail?: string;
+    owner?: string;
 }
 

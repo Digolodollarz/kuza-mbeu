@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meal, MealItemBundle, MealItemExtra, MealItemMain, MealItemRelish} from '../models';
+import {Meal,MealItem} from '../models';
 import {NotificationService} from '../../notifications/notification.service';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {AngularFireAuth} from 'angularfire2/auth';
@@ -13,10 +13,10 @@ import {take} from 'rxjs/internal/operators';
     styleUrls: ['./food.component.scss']
 })
 export class FoodComponent implements OnInit {
-    relishItems: Observable<MealItemRelish[]>;
-    mainItems: Observable<MealItemMain[]>;
-    extrasItems: Observable<MealItemExtra[]>;
-    vegetableItems: Observable<MealItemBundle[]>;
+    relishItems: Observable<MealItem[]>;
+    mainItems: Observable<MealItem[]>;
+    extrasItems: Observable<MealItem[]>;
+    vegetableItems: Observable<MealItem[]>;
     meal = new Meal();
 
     constructor(public afAuth: AngularFireAuth,
@@ -39,22 +39,22 @@ export class FoodComponent implements OnInit {
         });
     }
 
-    addMain(item: MealItemMain) {
+    addMain(item: MealItem) {
         this.meal.main = item;
         this.saveOrder();
     }
 
-    addRelish(item: MealItemRelish) {
+    addRelish(item: MealItem) {
         this.meal.relish = item;
         this.saveOrder();
     }
 
-    addVegetables(item: MealItemBundle) {
+    addVegetables(item: MealItem) {
         this.meal.vegetable = item;
         this.saveOrder();
     }
 
-    addExtra(item: MealItemExtra) {
+    addExtra(item: MealItem) {
         if (!this.meal.extras) {
             this.meal.extras = [];
         }
@@ -62,7 +62,7 @@ export class FoodComponent implements OnInit {
         this.saveOrder();
     }
 
-    removeExtra(item: MealItemExtra) {
+    removeExtra(item: MealItem) {
         const index = this.meal.extras.findIndex(extra => extra.name === item.name);
         if (index < 0) {
             return;

@@ -1,0 +1,114 @@
+<div class="add">
+    <div class="modal  fade" id="editHouseModal" tabindex="-1" role="dialog"
+         aria-labelledby="editHouseModal"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class=" card-plain">
+                    <div class="text-center">
+                        <h3>Edit House</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form #editHouseForm="ngForm" class="pristine ng-untouched">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input name="location" [(ngModel)]="house.location"
+                                               matInput placeholder="Location (Suburb)" required="required">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input name="street" [(ngModel)]="house.street"
+                                               matInput placeholder="Street" required="required">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input name="address" [(ngModel)]="house.address"
+                                               matInput placeholder="Address">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input name="rooms" [(ngModel)]="house.rooms"
+                                               matInput placeholder="Number of rooms" required="required">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input name="perRoom" [(ngModel)]="house.perRoom"
+                                               matInput placeholder="Occupants per room" type="number"
+                                               required="required">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input name="price" [(ngModel)]="house.price"
+                                               matInput placeholder="Price per head" type="number" required="required">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-12 col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input name="distance" [(ngModel)]="house.distance"
+                                               matInput placeholder="Distance from NUST(km)" type="number"
+                                               required="required">
+                                    </mat-form-field>
+                                </div>
+                                <div class="row col-12">
+                                    <div class="col-sm-12 col-md-4 col-lg 3">
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                WiFi
+                                                <input name="wifi" [(ngModel)]="house.wifi" class="form-check-input"
+                                                       type="checkbox" placeholder="WiFi Available">
+                                                <span class="form-check-sign"><span class="check"></span></span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg 3">
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                Tiles
+                                                <input name="tiles" [(ngModel)]="house.tiles" class="form-check-input"
+                                                       type="checkbox" placeholder="Tiles">
+                                                <span class="form-check-sign"><span class="check"></span></span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg 3">
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                Entertainment
+                                                <input name="rv" [(ngModel)]="house.tv" class="form-check-input"
+                                                       type="checkbox" placeholder="TV Available">
+                                                <span class="form-check-sign"><span class="check"></span></span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg 3">
+                                    <mat-form-field class="example-full-width">
+                                        <input name="image-url" [(ngModel)]="house.imageUrl"
+                                               matInput placeholder="Image URL to be place here.">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-success btn-small" (click)="save(house)"
+                                [disabled]="editHouseForm.invalid">Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

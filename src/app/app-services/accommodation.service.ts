@@ -3,6 +3,7 @@ import {AngularFirestore} from 'angularfire2/firestore';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {House, MealItem, MealItemMain} from './models';
 import {Observable} from 'rxjs/Rx';
+import {map} from 'rxjs/internal/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -18,13 +19,13 @@ export class AccommodationService {
 
     getHouses(): Observable<House[]> {
         return this.houseRef
-            .snapshotChanges().map(actions => {
+            .snapshotChanges().pipe(map((actions: any) => {
                 return actions.map(action => {
                     const data = action.payload.doc.data() as House;
                     const id = action.payload.doc.id;
                     return {id, ...data}
                 })
-            });
+            }));
     }
 
     saveHouse(item: MealItem) {

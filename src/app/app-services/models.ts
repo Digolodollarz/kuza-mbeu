@@ -47,6 +47,7 @@ export class MealItemExtra extends MealItem {
 }
 
 export class House {
+    id?: number;
     location: string;
     street: string;
     address: string;

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Meal, MealItem} from '../models';
-import {MealService} from '../meal.service';
+import {Meal, MealItem} from '../../app-services/models';
+import {MealService} from '../../app-services/meal.service';
 
 declare const $: any;
 
@@ -13,7 +13,7 @@ export class AddMealItemComponent implements OnInit {
 
     @Input() meal: MealItem;
     updating = false;
-    mealType: string;
+    @Input() mealType: string;
 
     constructor(private meals: MealService) {
     }
@@ -27,7 +27,7 @@ export class AddMealItemComponent implements OnInit {
     }
 
     save(item) {
-        this.meals.saveMealItem(item);
+        this.meals.saveMealItem(item, this.mealType);
         console.log(item);
         $('#addMealModal').modal('hide');
     }

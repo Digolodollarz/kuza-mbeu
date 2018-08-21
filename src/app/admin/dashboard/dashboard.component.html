@@ -191,7 +191,7 @@
                             </div>
                         </div>
                     </div>
-                    <app-add-meal-item [meal]="newMeal"></app-add-meal-item>
+                    <app-add-meal-item [meal]="newMeal" [mealType]="iType"></app-add-meal-item>
 
                     <div class="card-body">
                         <div class="tab-content">
@@ -246,7 +246,7 @@
                                     <th>Manage</th>
                                     </thead>
                                     <tbody>
-                                    <tr *ngFor="let meal of relishMeals">
+                                    <tr *ngFor="let meal of relishMeals | async">
                                         <td>
                                             <div class="form-check">
                                                 <label class="form-check-label">
@@ -287,7 +287,7 @@
                                     <th>Manage</th>
                                     </thead>
                                     <tbody>
-                                    <tr *ngFor="let meal of vegetableMeals">
+                                    <tr *ngFor="let meal of vegetableMeals | async">
                                         <td>
                                             <div class="form-check">
                                                 <label class="form-check-label">
@@ -328,7 +328,7 @@
                                     <th>Manage</th>
                                     </thead>
                                     <tbody>
-                                    <tr *ngFor="let meal of extrasMeals">
+                                    <tr *ngFor="let meal of extrasMeals | async">
                                         <td>
                                             <div class="form-check">
                                                 <label class="form-check-label">
@@ -366,34 +366,54 @@
             </div>
 
 
-            <div class="col-lg-6 col-md-12">
+            <div class="col-lg-10 col-lg-offset-1 col-md-12">
                 <div class="card">
                     <div class="card-header card-header-success">
                         <h4 class="card-title">Housing</h4>
                         <p class="card-category">Available Housing</p>
+                        <!-- Large modal -->
+                        <button type="button" class="btn btn-fab-mini" data-toggle="modal"
+                                data-target="#editHouseModal">
+                            <i class="material-icons">add</i>
+                        </button>
                     </div>
                     <div class="card-body table-responsive">
                         <table class="table table-hover">
                             <thead class="text-warning">
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Orders</th>
-                            <th>Role</th>
+                            <th>Location</th>
+                            <th>Rooms</th>
+                            <th>Price</th>
+                            <th>Manage</th>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let user of latestUsers">
-                                <td>{{user.firstName}}</td>
-                                <td>{{user.lastName}}</td>
-                                <td>{{23.0 | currency}}</td>
-                                <td>{{user.role || 'USER'}}</td>
+                            <tr *ngFor="let house of houses | async">
+                                <td>{{house.location}}</td>
+                                <td>{{house.rooms}}</td>
+                                <td>{{house.price | currency}}</td>
+                                <td class="td-actions text-right">
+                                    <button (click)="editHouse(house)" mat-raised-button type="button"
+                                            matTooltip="Edit House"
+                                            [matTooltipPosition]="'above'"
+                                            class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                    <!--<button (click)="discontinueMealItem(meal)" mat-raised-button type="button"-->
+                                    <!--matTooltip="Discontinue"-->
+                                    <!--[matTooltipPosition]="'above'"-->
+                                    <!--class="btn btn-danger btn-link btn-sm btn-just-icon">-->
+                                    <!--<i class="material-icons">close</i>-->
+                                    <!--</button>-->
+                                </td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+            <app-edit-house [house]="eHouse"></app-edit-house>
 
-            <!--<div class="col-lg-6 col-md-12">-->
+            <!--<div class=" col-lg-6 col-md-12
+                            ">-->
             <!--<div class="card">-->
             <!--<div class="card-header card-header-tabs card-header-primary">-->
             <!--<div class="nav-tabs-navigation">-->

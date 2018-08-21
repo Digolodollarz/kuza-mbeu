@@ -1,41 +1,42 @@
-import { NgModule } from '@angular/core';
-import { CommonModule, } from '@angular/common';
-import { BrowserModule  } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule,} from '@angular/common';
+import {BrowserModule} from '@angular/platform-browser';
+import {Routes, RouterModule} from '@angular/router';
 
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import {AdminComponent} from './admin/admin.component';
+import {HomeComponent} from './home/home.component';
+import {AccommodationComponent} from './app-services/accommodation/accommodation.component';
+import {FoodComponent} from './app-services/food/food.component';
 
-const routes: Routes =[
-  {
-    path: '',
-    redirectTo: 'user-profile',
-    pathMatch: 'full',
-  }, {
-    path: '',
-    component: AdminLayoutComponent,
-    children: [
-        {
-      path: '',
-      loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-  }]}
-    // { path: 'dashboard',      component: DashboardComponent },
-    // { path: 'user-profile',   component: UserProfileComponent },
-    // { path: 'table-list',     component: TableListComponent },
-    // { path: 'typography',     component: TypographyComponent },
-    // { path: 'icons',          component: IconsComponent },
-    // { path: 'maps',           component: MapsComponent },
-    // { path: 'notifications',  component: NotificationsComponent },
-    // { path: 'upgrade',        component: UpgradeComponent },
-    // { path: '',               redirectTo: 'dashboard', pathMatch: 'full' }
+const routes: Routes = [
+    {
+        path: '',
+        component: HomeComponent,
+    }, {
+        path: 'accommodation',
+        component: AccommodationComponent
+    }, {
+        path: 'food',
+        component: FoodComponent
+    },
+    {
+        path: 'admin',
+        component: AdminComponent,
+        children: [
+            {
+                path: '',
+                loadChildren: './admin/admin.module#AdminModule'
+            }]
+    }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    BrowserModule,
-    RouterModule.forRoot(routes)
-  ],
-  exports: [
-  ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        RouterModule.forRoot(routes)
+    ],
+    exports: [],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

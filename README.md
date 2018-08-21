@@ -100,10 +100,10 @@ md-free-angular-cli
 │   │   │   └── admin-layout
 │   │   │       ├── admin-layout.component.html
 │   │   │       ├── admin-layout.component.scss
-│   │   │       ├── admin-layout.component.spec.ts
+│   │   │       ├── admin.component.spec.ts
 │   │   │       ├── admin-layout.component.ts
 │   │   │       ├── admin-layout.module.ts
-│   │   │       └── admin-layout.routing.ts
+│   │   │       └── admin.routing.ts
 │   │   ├── maps
 │   │   │   ├── maps.component.css
 │   │   │   ├── maps.component.html

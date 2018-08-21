@@ -1,14 +1,16 @@
-<div class="main-content">
+<div class="main-content container">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 ml-auto mr-auto">
+                <div class="card text-center bg-primary text-light">
+                    <h3>Make your own meal</h3>
+                    <h5>Use the wizard to choose a perfect for your tastebuds. Click order, pay and have it
+                        prepared.</h5>
+                </div>
+
                 <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title">Make your meal</h4>
-                        <p class="card-category">Use the wizard to choose the perfect meal for yourself.</p>
-                    </div>
                     <div class="card-body">
-                        <ul class="nav nav-pills nav-pills-icons mr-auto ml-auto" role="tablist">
+                        <ul class="nav nav-pills mr-auto ml-auto" role="tablist">
                             <!--
                                 color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
                             -->
@@ -54,7 +56,7 @@
                             </div>
                             <div class="tab-pane" id="relish">
                                 <div class="row">
-                                    <div *ngFor="let item of relishItems" class="col-md-3 ml-auto mr-auto">
+                                    <div *ngFor="let item of relishItems | async" class="col-md-3 ml-auto mr-auto">
                                         <div class="card card-pricing text-center bg-success">
                                             <div class="card-body ">
                                                 <h3 class="card-title">{{item.name}}
@@ -73,7 +75,7 @@
                             </div>
                             <div class="tab-pane" id="vegetable">
                                 <div class="row">
-                                    <div *ngFor="let item of vegetableItems" class="col-md-3 ml-auto mr-auto">
+                                    <div *ngFor="let item of vegetableItems | async" class="col-md-3 ml-auto mr-auto">
                                         <div class="card card-pricing text-center bg-success">
                                             <div class="card-body ">
                                                 <h3 class="card-title">{{item.name}}
@@ -95,7 +97,7 @@
                             </div>
                             <div class="tab-pane" id="extras">
                                 <div class="row">
-                                    <div *ngFor="let item of extrasItems" class="col-md-3 ml-auto mr-auto">
+                                    <div *ngFor="let item of extrasItems | async" class="col-md-3 ml-auto mr-auto">
                                         <div class="card card-pricing text-center bg-success">
                                             <div class="card-body ">
                                                 <h3 class="card-title">{{item.name}}
@@ -115,33 +117,47 @@
 
                     </div>
                 </div>
-
-                <div class="card">
+                <style>
+                    .bottom-0 {
+                        bottom: 0;
+                    }
+                </style>
+                <div class="card position-sticky bottom-0">
                     <div class="card-body">
 
-                        <h3 *ngIf="meal.main">
+                        <h3 class="mt-0 mb-0" *ngIf="meal.main">
                             You have chosen<span> {{meal.main.name}}</span>
                             <span *ngIf="meal.relish"> and {{meal.relish.name}}</span>
                             <span *ngIf="meal.vegetable"> with {{meal.vegetable.name}}</span>.
+                            <button class="btn btn-social btn-link btn-info"
+                                    *ngFor="let extra of meal.extras"
+                                    (click)="removeExtra(extra)">{{extra.name}}
+                                <i class="material-icons">close</i>
+                            </button>
                         </h3>
 
-                        <h3 *ngIf="!meal.main && meal.relish">
+                        <h3 class="mt-0 mb-0"  *ngIf="!meal.main && meal.relish">
                             You have chosen <span>{{meal.relish.name}}</span>
                             <span *ngIf="meal.vegetable"> with {{meal.vegetable.name}}</span>.
                         </h3>
 
-                        <h3 *ngIf="!meal.main && !meal.relish && meal.vegetable">
+                        <h3 class="mt-0 mb-0"  *ngIf="!meal.main && !meal.relish && meal.vegetable">
                             You have only want <span>{{meal.vegetable.name}}</span>.
+                            <button class="btn btn-social btn-link btn-info"
+                                    *ngFor="let extra of meal.extras"
+                                    (click)="removeExtra(extra)">{{extra.name}}
+                                <i class="material-icons">close</i>
+                            </button>
                         </h3>
 
-                        <h4 *ngIf="meal.extras.length>0">Your extras:
+                        <h4 class="mt-0 mb-0"  *ngIf="meal.extras.length>70">Your extras:
                             <button class="btn btn-social btn-link btn-info"
                                     *ngFor="let extra of meal.extras"
                                     (click)="removeExtra(extra)">{{extra.name}}
                                 <i class="material-icons">close</i>
                             </button>
                         </h4>
-                        <h2 class="total text-left">Total: {{calculateTotal() | currency}}
+                        <h2 class="mt-0 mb-0 total text-left">Total: {{calculateTotal() | currency}}
                             <button class="btn btn-primary"
                                     (click)="placeOrder()">Order
                             </button>

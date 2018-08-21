@@ -5,6 +5,7 @@ import {AngularFirestore} from 'angularfire2/firestore';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {MealService} from '../meal.service';
 import {Observable} from 'rxjs/Rx';
+import {take} from 'rxjs/internal/operators';
 
 @Component({
     selector: 'app-food',
@@ -12,10 +13,10 @@ import {Observable} from 'rxjs/Rx';
     styleUrls: ['./food.component.scss']
 })
 export class FoodComponent implements OnInit {
-    relishItems: MealItemRelish[];
+    relishItems: Observable<MealItemRelish[]>;
     mainItems: Observable<MealItemMain[]>;
-    extrasItems: MealItemExtra[];
-    vegetableItems: MealItemBundle[];
+    extrasItems: Observable<MealItemExtra[]>;
+    vegetableItems: Observable<MealItemBundle[]>;
     meal = new Meal();
 
     constructor(public afAuth: AngularFireAuth,
@@ -29,13 +30,13 @@ export class FoodComponent implements OnInit {
         this.relishItems = this.meals.getRelishItems();
         this.vegetableItems = this.meals.getVegetableItems();
         this.extrasItems = this.meals.getExtrasItems();
-        this.afAuth.user.take(1).subscribe(user => {
+        this.afAuth.user.pipe(take(1)).subscribe(user => {
             if (user) {
                 if (!this.meal.main && !this.meal.relish) {
                     this.loadOrder();
                 }
             }
-        })
+        });
     }
 
     addMain(item: MealItemMain) {
@@ -91,7 +92,7 @@ export class FoodComponent implements OnInit {
 
     loadOrder() {
         this.afStore.doc<Meal>('orders/' + this.afAuth.auth.currentUser.uid + '/saved/meal')
-            .valueChanges().take(1).subscribe(meal => {
+            .valueChanges().pipe(take(1)).subscribe(meal => {
             if (meal) {
                 this.meal = meal;
                 NotificationService.showNotification('Previous meal loaded.')

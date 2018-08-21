@@ -1,9 +1,12 @@
+
+import {of as observableOf} from 'rxjs';
 import {Component, OnInit} from '@angular/core';
 import * as Chartist from 'chartist';
 import {AngularFirestore} from 'angularfire2/firestore';
-import {MealItem, MealItemBundle, MealItemExtra, MealItemMain, MealItemRelish} from '../app-services/models';
-import {MealService} from '../app-services/meal.service';
+import {House, MealItem, MealItemBundle, MealItemExtra, MealItemMain, MealItemRelish} from '../../app-services/models';
+import {MealService} from '../../app-services/meal.service';
 import {Observable} from 'rxjs/Rx';
+import {AccommodationService} from '../../app-services/accommodation.service';
 
 declare const $: any;
 
@@ -27,16 +30,20 @@ export enum OderStatus {
 export class DashboardComponent implements OnInit {
     latestUsers: UserProfile[];
     // dataDailySalesChart
-    mainMeals: Observable<MealItemMain[]> = Observable.of([]);
-    relishMeals: MealItemRelish[] = [];
-    vegetableMeals: MealItemBundle[] = [];
-    bundleMeals: MealItemMain[] = [];
-    extrasMeals: MealItemExtra[] = [];
+    mainMeals: Observable<MealItemMain[]> = observableOf([]);
+    relishMeals: Observable<MealItemRelish[]> = observableOf([]);
+    vegetableMeals: Observable<MealItemBundle[]> = observableOf([]);
+    bundleMeals: Observable<MealItemMain[]> = observableOf([]);
+    extrasMeals: Observable<MealItemExtra[]> = observableOf([]);
     newMeal = new MealItem();
+    iType = 'main';
 
+    houses: Observable<House[]> = observableOf([]);
+    eHouse = new House();
 
     constructor(private afStore: AngularFirestore,
-                private meals: MealService) {
+                private meals: MealService,
+                private accomodation: AccommodationService) {
     }
 
     startAnimationForLineChart(chart) {
@@ -102,6 +109,8 @@ export class DashboardComponent implements OnInit {
         this.relishMeals = this.meals.getRelishItems();
         this.vegetableMeals = this.meals.getVegetableItems();
         this.extrasMeals = this.meals.getExtrasItems();
+
+        this.houses = this.accomodation.getHouses();
 
         this.afStore.collection<UserProfile>('profiles')
             .valueChanges().subscribe(users => {
@@ -200,11 +209,21 @@ export class DashboardComponent implements OnInit {
         this.startAnimationForBarChart(websiteViewsChart);
     }
 
-    editMealItem(item) {
+    editMealItem(item, iType) {
         this.newMeal = item;
+        this.iType = iType;
         $('#addMealModal').modal('show');
         $('#addMealModal').on('hidden.bs.modal', () => {
             this.newMeal = new MealItem();
+        });
+        return true;
+    }
+
+    editHouse(item) {
+        this.eHouse = item;
+        $('#editHouseModal').modal('show');
+        $('#editHouseModal').on('hidden.bs.modal', () => {
+            this.eHouse = new House();
         });
         return true;
     }

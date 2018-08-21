@@ -1,68 +1,83 @@
 import {Injectable} from '@angular/core';
 import {MealItem, MealItemBundle, MealItemExtra, MealItemMain, MealItemRelish} from './models';
-import {AngularFirestore} from 'angularfire2/firestore';
-import {Observable} from 'rxjs/Rx';
+import {AngularFirestore, CollectionReference} from 'angularfire2/firestore';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import SnapshotMetadata = firebase.firestore.SnapshotMetadata;
 
 @Injectable({
     providedIn: 'root'
 })
 export class MealService {
-    public mainItems = [
-        {name: 'Sadza', price: 0},
-        {name: 'Rice', price: 0},
-        {name: 'Chips', price: 1},
-    ];
-
-    public relishItems = [
-        {name: 'Chicken', price: 1},
-        {name: 'Beef', price: 1},
-        {name: 'T-Bone', price: 1.5},
-        {name: 'Beans', price: 0.5},
-        {name: 'Mince', price: 0.75},
-    ];
-
-    public vegetableItems = [
-        {name: 'Coleslaw', price: 0, standalone: false},
-        {name: 'Greens', price: 0, standalone: false},
-        {name: 'Salads', price: 0, standalone: false, min_offer: 1.5},
-    ];
-
-    public extrasItems = [
-        {name: 'Pepsi', price: 0.5},
-        {name: 'Coke (bottle)', price: 0.5},
-        {name: 'Coke (can)', price: 0.6},
-    ];
 
     private mealRef;
+    private readonly mainRef;
+    private readonly relishRef;
+    private readonly vegetableRef;
+    private readonly extrasRef;
 
     constructor(private afStore: AngularFirestore) {
-        this.mealRef = this.afStore.collection<MealItemMain>('meals/main/all')
+        this.mainRef = this.afStore.collection<MealItemMain>('meals/main/all');
+        this.relishRef = this.afStore.collection<MealItemMain>('meals/relish/all');
+        this.vegetableRef = this.afStore.collection<MealItemMain>('meals/vegetables/all');
+        this.extrasRef = this.afStore.collection<MealItemMain>('meals/extras/all');
     }
 
     getMainItems(): Observable<MealItemMain[]> {
-        return this.mealRef
-            .snapshotChanges().map(actions => {
+        return this.mainRef
+            .snapshotChanges().pipe(map((actions: any) => {
                 return actions.map(action => {
                     const data = action.payload.doc.data() as MealItemMain;
                     const id = action.payload.doc.id;
                     return {id, ...data}
                 })
-            });
+            }));
     }
 
-    getRelishItems(): MealItemRelish[] {
-        return this.relishItems;
+    getRelishItems(): Observable<MealItemRelish[]> {
+        return this.relishRef
+            .snapshotChanges().pipe(map((actions: any) => {
+                return actions.map(action => {
+                    const data = action.payload.doc.data() as MealItemRelish;
+                    const id = action.payload.doc.id;
+                    return {id, ...data}
+                })
+            }));
     }
 
-    getVegetableItems(): MealItemBundle[] {
-        return this.vegetableItems;
+    getVegetableItems(): Observable<MealItemBundle[]> {
+        return this.vegetableRef
+            .snapshotChanges().pipe(map((actions: any) => {
+                return actions.map(action => {
+                    const data = action.payload.doc.data() as MealItemBundle;
+                    const id = action.payload.doc.id;
+                    return {id, ...data}
+                })
+            }));
     }
 
-    getExtrasItems(): MealItemExtra[] {
-        return this.extrasItems;
+    getExtrasItems(): Observable<MealItemExtra[]> {
+        return this.extrasRef
+            .snapshotChanges().pipe(map((actions: any) => {
+                return actions.map(action => {
+                    const data = action.payload.doc.data() as MealItemExtra;
+                    const id = action.payload.doc.id;
+                    return {id, ...data}
+                })
+            }));
     }
 
-    saveMealItem(item: MealItem) {
+    saveMealItem(item: MealItem, type) {
+        console.log('Type', type);
+        if (type === 'main') {
+            this.mealRef = this.mainRef
+        } else if (type === 'relish') {
+            this.mealRef = this.relishRef
+        } else if (type === 'veg') {
+            this.mealRef = this.vegetableRef
+        } else if (type === 'extra') {
+            this.mealRef = this.extrasRef
+        }
         if (item.id) {
             return this.mealRef.doc(item.id).update(item);
         } else {

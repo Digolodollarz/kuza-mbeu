@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {House} from '../models';
+import {AccommodationService} from '../accommodation.service';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
     selector: 'app-accommodation',
@@ -8,20 +10,13 @@ import {House} from '../models';
 })
 export class AccommodationComponent implements OnInit {
 
-    houses: House[];
+    houses: Observable<House[]>;
 
-    constructor() {
+    constructor(private acc: AccommodationService) {
     }
 
     ngOnInit() {
-        this.houses = [
-            {tv: false, imageUrl: '', address: '12345 Example Street', street: 'Example', location: 'Example North', distance: 0.3, perRoom: 2, price: 80, rooms: 5, tiles: false, wifi: true},
-            {tv: true, imageUrl: '', address: '12345 Example Street', street: 'Example', location: 'Example North', distance: 0.6, perRoom: 2, price: 75, rooms: 5, tiles: false, wifi: true},
-            {tv: false, imageUrl: '', address: '12345 Example Street', street: 'Example', location: 'Example North', distance: 1.5, perRoom: 2, price: 65, rooms: 5, tiles: false, wifi: false},
-            {tv: true, imageUrl: '', address: '12345 Example Street', street: 'Example', location: 'Example North', distance: 0.3, perRoom: 2, price: 90, rooms: 5, tiles: false, wifi: true},
-            {tv: false, imageUrl: '', address: '12345 Example Street', street: 'Example', location: 'Example North', distance: 1.3, perRoom: 2, price: 65, rooms: 5, tiles: false, wifi: false},
-            {tv: false, imageUrl: '', address: '12345 Example Street', street: 'Example', location: 'Example North', distance: 2.3, perRoom: 2, price: 80, rooms: 5, tiles: false, wifi: true},
-        ];
+        this.houses = this.acc.getHouses()
     }
 
 

@@ -1,22 +1,14 @@
 <div class="main-content container">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 ml-auto mr-auto">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Finding Accommodation</h4>
-                        <p class="card-category">--put some text here--</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="">
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                    </div>
+            <div class="col-12">
+                <div class="card bg-primary text-light text-center">
+                    <h3>Finding Accommodation</h3>
+                    <p>A cozy place to put up during your stay</p>
                 </div>
             </div>
 
-            <div *ngFor="let house of houses" class="col-md-4 ml-auto mr-auto">
+            <div *ngFor="let house of houses| async" class="col-md-4 ml-auto mr-auto">
                 <div class="card card-chart">
                     <div class="card-header card-header-image" data-header-animation="true">
                         <a href="#">

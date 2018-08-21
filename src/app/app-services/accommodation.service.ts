@@ -14,7 +14,7 @@ export class AccommodationService {
 
     constructor(private afStore: AngularFirestore,
                 private afStorage: AngularFireStorage) {
-        this.houseRef = this.afStore.collection<House>('houses/available/all');
+        this.houseRef = this.afStore.collection<House>('houses');
     }
 
     getHouses(): Observable<House[]> {

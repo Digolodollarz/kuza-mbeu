@@ -3,7 +3,7 @@ import {ROUTES} from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
-import {CartService} from '../../app-services/cart.service';
+import {CartService} from '../../../app-services/cart.service';
 
 @Component({
     selector: 'app-navbar',

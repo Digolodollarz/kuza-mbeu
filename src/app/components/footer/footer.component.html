@@ -1,6 +1,6 @@
-<footer class="footer ">
-    <div class="container-fluid">
-        <nav class="pull-left">
+<footer class="footer">
+    <div class="container">
+        <nav class="float-left">
             <ul>
                 <li>
                     <a href="https://www.kuzambeu.co.zw">
@@ -8,21 +8,30 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.kuzambeu.co.zw/about">
+                    <a href="/about">
                         About Us
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.kuzambeu.co.zw/privacy">
+                    <a href="/privacy">
                         Privacy
+                    </a>
+                </li>
+                <li>
+                    <a href="/license">
+                        License
                     </a>
                 </li>
             </ul>
         </nav>
-        <div class="copyright pull-right">
-            &copy; Kuza
-            {{test | date: 'yyyy'}}, by
-            <a href="https://diggle.tech/studios" target="_blank">Diggle Tech</a> for a better web.
+        <div class="copyright float-right">
+            © Kuza
+            <script>
+                document.write(new Date().getFullYear().toString())
+            </script>
+            , by
+            <a href="https://diggle.tech/studios" target="_blank">Diggle Studios</a>.
         </div>
     </div>
 </footer>
+

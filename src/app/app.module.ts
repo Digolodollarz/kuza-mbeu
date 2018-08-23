@@ -7,7 +7,7 @@ import {RouterModule} from '@angular/router';
 
 import {OverlayModule} from '@angular/cdk/overlay';
 import {AppRoutingModule} from './app.routing';
-import {ComponentsModule} from './components/components.module';
+import {ComponentsModule} from './admin/components/components.module';
 
 import {AppComponent} from './app.component';
 
@@ -36,6 +36,9 @@ import {HomeComponent} from './home/home.component';
 import {FoodComponent} from './app-services/food/food.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
+import { RegisterComponent } from './user/register/register.component';
+import { LoginComponent } from './user/login/login.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyBc2e0lZhomB6Zw2gunPZUPhQkV0Balq_8',
@@ -71,6 +74,9 @@ const firebaseConfig = {
         HomeComponent,
         AccommodationComponent,
         FoodComponent,
+        RegisterComponent,
+        LoginComponent,
+        FooterComponent,
     ],
     providers: [],
     bootstrap: [AppComponent]

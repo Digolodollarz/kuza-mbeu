@@ -7,6 +7,8 @@ import {AdminComponent} from './admin/admin.component';
 import {HomeComponent} from './home/home.component';
 import {AccommodationComponent} from './app-services/accommodation/accommodation.component';
 import {FoodComponent} from './app-services/food/food.component';
+import {RegisterComponent} from './user/register/register.component';
+import {LoginComponent} from './user/login/login.component';
 
 const routes: Routes = [
     {
@@ -18,8 +20,13 @@ const routes: Routes = [
     }, {
         path: 'food',
         component: FoodComponent
-    },
-    {
+    }, {
+        path: 'register',
+        component: RegisterComponent
+    }, {
+        path: 'login',
+        component: LoginComponent
+    }, {
         path: 'admin',
         component: AdminComponent,
         children: [

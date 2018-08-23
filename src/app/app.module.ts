@@ -39,6 +39,8 @@ import {CommonModule} from '@angular/common';
 import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { UserComponent } from './user/user.component';
+import {MatButtonModule, MatInputModule, MatRippleModule, MatTooltipModule} from '@angular/material';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyBc2e0lZhomB6Zw2gunPZUPhQkV0Balq_8',
@@ -54,6 +56,10 @@ const firebaseConfig = {
         CommonModule,
         BrowserAnimationsModule,
         FormsModule,
+        MatButtonModule,
+        MatRippleModule,
+        MatInputModule,
+        MatTooltipModule,
         HttpModule,
         ComponentsModule,
         RouterModule,
@@ -77,6 +83,7 @@ const firebaseConfig = {
         RegisterComponent,
         LoginComponent,
         FooterComponent,
+        UserComponent,
     ],
     providers: [],
     bootstrap: [AppComponent]

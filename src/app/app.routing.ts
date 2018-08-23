@@ -9,6 +9,7 @@ import {AccommodationComponent} from './app-services/accommodation/accommodation
 import {FoodComponent} from './app-services/food/food.component';
 import {RegisterComponent} from './user/register/register.component';
 import {LoginComponent} from './user/login/login.component';
+import {UserComponent} from './user/user.component';
 
 const routes: Routes = [
     {
@@ -26,6 +27,9 @@ const routes: Routes = [
     }, {
         path: 'login',
         component: LoginComponent
+    }, {
+        path: 'profile',
+        component: UserComponent
     }, {
         path: 'admin',
         component: AdminComponent,

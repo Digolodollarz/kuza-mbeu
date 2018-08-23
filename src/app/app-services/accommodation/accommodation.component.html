@@ -1,64 +1,72 @@
-<div class="main-content container">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card bg-primary text-light text-center">
-                    <h3>Finding Accommodation</h3>
-                    <p>A cozy place to put up during your stay</p>
-                </div>
-            </div>
-
-            <div *ngFor="let house of houses| async" class="col-md-4 ml-auto mr-auto">
-                <div class="card card-chart">
-                    <div class="card-header card-header-image" data-header-animation="true">
-                        <a href="#">
-                            <img class="img"
-                                 src="/assets/img/house.jpg">
-                        </a>
+<div class="wrapper wrapper-full-page">
+    <div class="page-header login-page header-filter" filter-color="black"
+         style="background-image: url('/assets/img/register.jpg'); background-size: cover; background-position: top center;">
+        <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+        <div class="main-content container">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card bg-primary text-light text-center">
+                            <h3>Finding Accommodation</h3>
+                            <p>A cozy place to put up during your stay</p>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
 
-                            <button type="button" class="btn btn-info btn-link" rel="tooltip"
-                                    data-placement="bottom" title="Refresh">
-                                <i class="material-icons">refresh</i>
-                            </button>
+                    <div *ngFor="let house of houses| async" class="col-md-4 ml-auto mr-auto">
+                        <div class="card card-chart">
+                            <div class="card-header card-header-image" data-header-animation="true">
+                                <a href="#">
+                                    <img class="img"
+                                         src="/assets/img/house.jpg">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-actions">
+                                    <button type="button" class="btn btn-danger btn-link fix-broken-card">
+                                        <i class="material-icons">build</i> Fix Header!
+                                    </button>
 
-                            <button type="button" class="btn btn-default btn-link" rel="tooltip"
-                                    data-placement="bottom" title="Change Date">
-                                <i class="material-icons">edit</i>
-                            </button>
+                                    <button type="button" class="btn btn-info btn-link" rel="tooltip"
+                                            data-placement="bottom" title="Refresh">
+                                        <i class="material-icons">refresh</i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-default btn-link" rel="tooltip"
+                                            data-placement="bottom" title="Change Date">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                </div>
+                                <h4 class="card-title">{{house.rooms}} rooms | {{house.location}}</h4>
+                                <div class="items">
+                                    <!--Price-->
+                                    <span class="price">{{house.price|currency}}</span>
+
+                                    <!--Wifi-->
+                                    <span *ngIf="house.wifi"> | <i class="material-icons">wifi_lock</i></span>
+                                    <span *ngIf="!house.wifi"> | <i class="material-icons"
+                                                                    title="No WiFi">signal_wifi_off</i></span>
+
+                                    <!--Entertainment-->
+                                    <span *ngIf="house.tv"> | <i class="material-icons">live_tv</i></span>
+                                    <span *ngIf="!house.tv"> | <i class="material-icons">live_tv</i></span>
+                                </div>
+                                <p class="card-category"><i class="material-icons">directions_walk</i> {{house.distance}}km from
+                                    NUST</p>
+                                <p class="card-category">{{house.address}}</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <span class="text-left">{{house.price|currency}}</span>
+                                </div>
+                                <button class="btn btn-link btn-primary">Request</button>
+                            </div>
                         </div>
-                        <h4 class="card-title">{{house.rooms}} rooms | {{house.location}}</h4>
-                        <div class="items">
-                            <!--Price-->
-                            <span class="price">{{house.price|currency}}</span>
-
-                            <!--Wifi-->
-                            <span *ngIf="house.wifi"> | <i class="material-icons">wifi_lock</i></span>
-                            <span *ngIf="!house.wifi"> | <i class="material-icons"
-                                                            title="No WiFi">signal_wifi_off</i></span>
-
-                            <!--Entertainment-->
-                            <span *ngIf="house.tv"> | <i class="material-icons">live_tv</i></span>
-                            <span *ngIf="!house.tv"> | <i class="material-icons">live_tv</i></span>
-                        </div>
-                        <p class="card-category"><i class="material-icons">directions_walk</i> {{house.distance}}km from
-                            NUST</p>
-                        <p class="card-category">{{house.address}}</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <span class="text-left">{{house.price|currency}}</span>
-                        </div>
-                        <button class="btn btn-link btn-primary">Request</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 

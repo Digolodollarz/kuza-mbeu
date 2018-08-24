@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {auth} from 'firebase';
 import {AngularFirestore} from 'angularfire2/firestore';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -14,7 +15,9 @@ export class LoginComponent implements OnInit {
     private userDocument;
 
     constructor(public afAuth: AngularFireAuth,
-                private afStore: AngularFirestore) {
+                private afStore: AngularFirestore,
+                private router: Router,
+                private route: ActivatedRoute) {
     }
 
     ngOnInit() {
@@ -98,12 +101,22 @@ export class LoginComponent implements OnInit {
         const password = form.password;
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
             .then((user) => {
+                this.navigate();
             })
             .catch(error => {
                 console.log(error);
                 alert(error);
                 throw error
             });
+    }
+
+    navigate() {
+        alert(this.route.snapshot.paramMap.get('return'));
+        let nextUrl = '/';
+        if (this.route.snapshot.paramMap.get('return')) {
+            nextUrl = this.route.snapshot.paramMap.get('return');
+        }
+        this.router.navigate([nextUrl])
     }
 
     logout() {

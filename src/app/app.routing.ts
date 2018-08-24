@@ -10,6 +10,7 @@ import {FoodComponent} from './app-services/food/food.component';
 import {RegisterComponent} from './user/register/register.component';
 import {LoginComponent} from './user/login/login.component';
 import {UserComponent} from './user/user.component';
+import {AdminGuard} from './admin.guard';
 
 const routes: Routes = [
     {
@@ -33,6 +34,8 @@ const routes: Routes = [
     }, {
         path: 'admin',
         component: AdminComponent,
+        canActivate: [AdminGuard],
+        canActivateChild: [AdminGuard],
         children: [
             {
                 path: '',

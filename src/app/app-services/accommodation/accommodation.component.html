@@ -16,14 +16,14 @@
                         <div class="card card-chart">
                             <div class="card-header card-header-image" data-header-animation="true">
                                 <a href="#">
-                                    <img class="img"
-                                         src="/assets/img/house.jpg">
+                                    <img class="img" style="height: 180px;"
+                                         src="{{house.imageUrl || '/assets/img/house.jpg'}}">
                                 </a>
                             </div>
                             <div class="card-body">
                                 <div class="card-actions">
                                     <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                                        <i class="material-icons">build</i> Fix Header!
+                                        <i class="material-icons">build</i> Network Error!
                                     </button>
 
                                     <button type="button" class="btn btn-info btn-link" rel="tooltip"
@@ -50,7 +50,8 @@
                                     <span *ngIf="house.tv"> | <i class="material-icons">live_tv</i></span>
                                     <span *ngIf="!house.tv"> | <i class="material-icons">live_tv</i></span>
                                 </div>
-                                <p class="card-category"><i class="material-icons">directions_walk</i> {{house.distance}}km from
+                                <p class="card-category"><i class="material-icons">directions_walk</i>
+                                    {{house.distance}}km from
                                     NUST</p>
                                 <p class="card-category">{{house.address}}</p>
                             </div>

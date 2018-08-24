@@ -29,19 +29,23 @@
                                 </div>
                                 <div class="col-md-5 mr-auto">
                                     <div class="social text-center">
-                                        <button class="btn btn-just-icon btn-round btn-twitter mat-raised-button"
+
+                                        <!--<button (click)="login('Twitter')"-->
+                                                <!--class="btn btn-just-icon btn-round btn-twitter mat-raised-button"-->
+                                                <!--mat-raised-button=""><span class="mat-button-wrapper"><i-->
+                                                <!--class="fa fa-twitter"></i></span>-->
+                                            <!--<div class="mat-button-ripple mat-ripple" matripple=""></div>-->
+                                            <!--<div class="mat-button-focus-overlay"></div>-->
+                                        <!--</button>-->
+                                        <button (click)="login('Google')"
+                                                class="btn btn-just-icon btn-round btn-dribbble mat-raised-button"
                                                 mat-raised-button=""><span class="mat-button-wrapper"><i
-                                                class="fa fa-twitter"></i></span>
+                                                class="fa fa-google-plus"></i></span>
                                             <div class="mat-button-ripple mat-ripple" matripple=""></div>
                                             <div class="mat-button-focus-overlay"></div>
                                         </button>
-                                        <button class="btn btn-just-icon btn-round btn-dribbble mat-raised-button"
-                                                mat-raised-button=""><span class="mat-button-wrapper"><i
-                                                class="fa fa-dribbble"></i></span>
-                                            <div class="mat-button-ripple mat-ripple" matripple=""></div>
-                                            <div class="mat-button-focus-overlay"></div>
-                                        </button>
-                                        <button class="btn btn-just-icon btn-round btn-facebook mat-raised-button"
+                                        <button (click)="login('Facebook')"
+                                                class="btn btn-just-icon btn-round btn-facebook mat-raised-button"
                                                 mat-raised-button=""><span class="mat-button-wrapper"><i
                                                 class="fa fa-facebook"></i></span>
                                             <div class="mat-button-ripple mat-ripple" matripple=""></div>
@@ -49,36 +53,41 @@
                                         </button>
                                         <h4 class="mt-3"> or be classical </h4></div>
                                     <form action="" class="form ng-untouched ng-pristine ng-valid" method=""
-                                          novalidate="">
+                                          novalidate="" #register="ngForm" (ngSubmit)="signUpWithEmail(register.value)">
                                         <div class="form-group has-default">
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="material-icons">face</i></span></div>
-                                                <input class="form-control" placeholder="Full Name..." type="text">
+                                                <input class="form-control" name="name" placeholder="Full Name..."
+                                                       type="text" required="required" ngModel>
                                             </div>
                                         </div>
                                         <div class="form-group has-default">
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="material-icons">mail</i></span></div>
-                                                <input class="form-control" placeholder="Email..." type="text">
+                                                <input name="email" class="form-control" placeholder="Email..."
+                                                       type="email" required="required" ngModel>
                                             </div>
                                         </div>
                                         <div class="form-group has-default">
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i
                                                         class="material-icons">lock_outline</i></span></div>
-                                                <input class="form-control" placeholder="Password..."
-                                                       type="password"></div>
+                                                <input name="password" class="form-control" placeholder="Password..."
+                                                       type="password" required="required" ngModel></div>
                                         </div>
-                                        <div class="form-check"><label class="form-check-label"><input checked=""
-                                                                                                       class="form-check-input"
-                                                                                                       type="checkbox"
-                                                                                                       value=""><span
+                                        <div class="form-check"><label class="form-check-label">
+                                            <input checked=""
+                                                   class="form-check-input"
+                                                   type="checkbox"
+                                                   value=""><span
                                                 class="form-check-sign"><span class="check"></span></span> I agree
                                             to the <a href="#terms">terms and conditions</a>. </label></div>
-                                        <div class="text-center"><a class="btn btn-primary btn-round mt-4"
-                                                                    href="#pablo">Get Started</a></div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary btn-round mt-4">Get Started
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>

@@ -5,34 +5,27 @@
         <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
         <div class="container">
             <div class="col-lg-4 col-md-6 col-sm-6 ml-auto mr-auto">
-                <form class="form" method="" action="">
+                <form class="form" method="" action="" #loginForm="ngForm"
+                      (ngSubmit)="loginWithEmail(loginForm.value)">
                     <div class="card card-login">
                         <div class="card-header card-header-rose text-center">
                             <h4 class="card-title">Login</h4>
                             <div class="social-line">
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                                <button (click)="login('Facebook')"
+                                        class="btn btn-just-icon btn-link btn-white">
                                     <i class="fa fa-facebook-square"></i>
-                                </a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                                </button>
+                                <!--<button (click)="login('Twitter')" class="btn btn-just-icon btn-link btn-white">-->
+                                    <!--<i class="fa fa-twitter"></i>-->
+                                <!--</button>-->
+                                <button (click)="login('Google')" class="btn btn-just-icon btn-link btn-white">
                                     <i class="fa fa-google-plus"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                         <div class="card-body ">
                             <p class="card-description text-center">Or Be Classical</p>
-                            <span class="bmd-form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">face</i>
-                  </span>
-                </div>
-                <input type="text" class="form-control" placeholder="First Name...">
-              </div>
-            </span>
+                            <span class="bmd-form-group"></span>
                             <span class="bmd-form-group">
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -40,7 +33,8 @@
                     <i class="material-icons">email</i>
                   </span>
                 </div>
-                <input type="email" class="form-control" placeholder="Email...">
+                <input type="email" class="form-control" placeholder="Email..."
+                       name="email" ngModel>
               </div>
             </span>
                             <span class="bmd-form-group">
@@ -50,12 +44,15 @@
                     <i class="material-icons">lock_outline</i>
                   </span>
                 </div>
-                <input type="password" class="form-control" placeholder="Password...">
+                <input type="password" class="form-control" placeholder="Password..."
+                       name="password" ngModel="">
               </div>
             </span>
                         </div>
                         <div class="card-footer justify-content-center">
-                            <a href="#pablo" class="btn btn-rose btn-link btn-lg">Lets Go</a>
+                            <button class="btn btn-rose btn-round btn-lg"
+                                    type="submit">Lets Go
+                            </button>
                         </div>
                     </div>
                 </form>

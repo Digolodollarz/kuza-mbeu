@@ -82,6 +82,26 @@ export class UserComponent implements OnInit {
         }
     }
 
+    signUpWithEmail(email: string, password: string) {
+        return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+            .then((user) => {
+            })
+            .catch(error => {
+                console.log(error)
+                throw error
+            });
+    }
+
+    loginWithEmail(email: string, password: string) {
+        return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+            .then((user) => {
+            })
+            .catch(error => {
+                console.log(error)
+                throw error
+            });
+    }
+
     logout() {
         this.afAuth.auth.signOut();
     }

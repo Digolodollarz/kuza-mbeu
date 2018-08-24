@@ -36,20 +36,11 @@ import {HomeComponent} from './home/home.component';
 import {FoodComponent} from './app-services/food/food.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
-import { RegisterComponent } from './user/register/register.component';
-import { LoginComponent } from './user/login/login.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { UserComponent } from './user/user.component';
+import {RegisterComponent} from './user/register/register.component';
+import {LoginComponent} from './user/login/login.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {UserComponent} from './user/user.component';
 import {MatButtonModule, MatInputModule, MatRippleModule, MatTooltipModule} from '@angular/material';
-
-const firebaseConfig = {
-    apiKey: 'AIzaSyBc2e0lZhomB6Zw2gunPZUPhQkV0Balq_8',
-    authDomain: 'kuza-mbeu.firebaseapp.com',
-    databaseURL: 'https://kuza-mbeu.firebaseio.com',
-    projectId: 'kuza-mbeu',
-    storageBucket: 'kuza-mbeu.appspot.com',
-    messagingSenderId: '36140092042'
-};
 
 @NgModule({
     imports: [
@@ -68,7 +59,7 @@ const firebaseConfig = {
         AgmCoreModule.forRoot({
             apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
         }),
-        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
         AngularFireStorageModule,
         AngularFireAuthModule,

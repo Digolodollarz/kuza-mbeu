@@ -47,40 +47,60 @@ export class UserProfileComponent implements OnInit {
             if (provider === 'Google') {
                 this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
                     .then().catch(error => {
-                    if (error.code = 'auth/operation-not-allowed') {
+                    if (error.code === 'auth/operation-not-allowed') {
                         alert('You are not allowed to do this! \n' + error.message)
-                    } else if (error.code = 'auth/network-request-failed') {
+                    } else if (error.code === 'auth/network-request-failed') {
                         alert('You can\'t log in while offline')
+                    } else {
+                        alert(error.message)
                     }
                 });
             } else if (provider === 'Facebook') {
                 this.afAuth.auth.signInWithPopup(new auth.FacebookAuthProvider()).then().catch(error => {
-                    if (error.code = 'auth/operation-not-allowed') {
+                    if (error.code === 'auth/operation-not-allowed') {
                         alert('You are not allowed to do this! \n' + error.message)
-                    } else if (error.code = 'auth/network-request-failed') {
+                    } else if (error.code === 'auth/network-request-failed') {
                         alert('You can\'t log in while offline')
+                    } else {
+                        alert(error.message)
                     }
                 });
             } else if (provider === 'Twitter') {
                 this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider()).then().catch(error => {
-                    if (error.code = 'auth/operation-not-allowed') {
+                    if (error.code === 'auth/operation-not-allowed') {
                         alert('You are not allowed to do this! \n' + error.message)
-                    } else if (error.code = 'auth/network-request-failed') {
+                    } else if (error.code === 'auth/network-request-failed') {
                         alert('You can\'t log in while offline')
+                    } else {
+                        alert(error.message)
                     }
                 });
             } else if (provider === 'Email') {
-                this.afAuth.auth.signInWithPopup(new auth.EmailAuthProvider()).then().catch(error => {
-                    if (error.code = 'auth/operation-not-allowed') {
-                        alert('You are not allowed to do this! \n' + error.message)
-                    } else if (error.code = 'auth/network-request-failed') {
-                        alert('You can\'t log in while offline')
-                    }
-                });
+                alert('We don\'t do that here');
             }
         } catch (e) {
             alert(e.code)
         }
+    }
+
+    signUpWithEmail(email: string, password: string) {
+        return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+            .then((user) => {
+            })
+            .catch(error => {
+                console.log(error)
+                throw error
+            });
+    }
+
+    loginWithEmail(email: string, password: string) {
+        return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+            .then((user) => {
+            })
+            .catch(error => {
+                console.log(error)
+                throw error
+            });
     }
 
     logout() {

@@ -76,12 +76,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-4 col-lg 3">
-                                <mat-form-field class="example-full-width">
-                                    <input name="image-url" [(ngModel)]="meal.imageUrl"
-                                           matInput placeholder="imageUrl">
-                                </mat-form-field>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="image-preview" *ngIf="meal.imageUrl">
+                                <img class="img-rounded img-thumbnail" src="{{meal.imageUrl}}"
+                                     alt="{{meal.name}}">
+                            </div>
+                            <div class=" text-primary">
+                                <input type="file" [disabled]="!meal.name"
+                                       (change)="upload($event, meal.name)"
+                                       id="customFile" name="activityImage" class=""
+                                       accept="image/png, image/jpeg"/>
+                                <label class="" for="customFile">Item Image</label>
                             </div>
                         </div>
                     </form>

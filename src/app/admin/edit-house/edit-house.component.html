@@ -26,7 +26,7 @@
                                 <div class="col-sm-12">
                                     <mat-form-field class="example-full-width">
                                         <input name="address" [(ngModel)]="house.address"
-                                               matInput placeholder="Address">
+                                               matInput placeholder="Address" required="required">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
@@ -90,12 +90,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-md-4 col-lg 3">
-                                    <mat-form-field class="example-full-width">
-                                        <input name="image-url" [(ngModel)]="house.imageUrl"
-                                               matInput placeholder="Image URL to be place here.">
-                                    </mat-form-field>
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="image-preview" *ngIf="house.imageUrl">
+                                        <img class="img-rounded img-thumbnail" src="{{house.imageUrl}}"
+                                             alt="{{house.address}}">
+                                    </div>
+                                    <div class="">
+                                        <input type="file" [disabled]="!house.address"
+                                               (change)="upload($event, house.address)"
+                                               id="customFile" name="activityImage" class=""
+                                               accept="image/png, image/jpeg"/>
+                                        <label class="" for="customFile">Featured Image</label>
+                                    </div>
                                 </div>
+
+                                <!--<div class="col-sm-12 col-md-4 col-lg 3">-->
+                                <!--<mat-form-field class="example-full-width">-->
+                                <!--<input name="image-url" [(ngModel)]="house.imageUrl"-->
+                                <!--matInput placeholder="Image URL to be place here.">-->
+                                <!--</mat-form-field>-->
+                                <!--</div>-->
                                 <div class="row col-12">
                                     <div class="col-sm-12 col-md-6">
                                         <mat-form-field class="example-full-width">
@@ -126,7 +140,7 @@
                         </form>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-success btn-small" (click)="save(house)"
+                        <button class="btn btn-success" (click)="save(house)"
                                 [disabled]="editHouseForm.invalid">Save
                         </button>
                     </div>

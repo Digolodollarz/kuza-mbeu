@@ -29,6 +29,7 @@ export class MealItem extends Doc implements CartItem {
     priceStandalone?: number;
     standalone?: boolean;
     imageUrl?: string;
+    imageRef?: string;
     description?: string;
     available?: boolean;
     discontinued?: boolean;
@@ -47,6 +48,7 @@ export class House {
     distance: number;
     tiles: boolean;
     imageUrl: string;
+    imageRef: string;
     tv = false;
     contactPhone?: string;
     contactPhone2?: string;
